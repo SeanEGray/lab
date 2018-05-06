@@ -53,3 +53,7 @@ variable "dns_servers" {
     type = "list"
     description = "Enter DNS servers for the Lab VNET"
 }
+
+variable "domain_name" {
+    description = "Enter the name of the Active Directory domain"
+}

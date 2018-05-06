@@ -31,7 +31,7 @@ resource "azurerm_subnet" "lab_subnet_2" {
 }
 
 resource "azurerm_network_security_group" "adds_nsg" {
-  name                = "AADDS-bigyak.io-NSG"
+  name                = "AADDS-${var.domain_name}-NSG"
   location            = "${var.location}"
   resource_group_name = "${azurerm_resource_group.lab_rg.name}"
 
