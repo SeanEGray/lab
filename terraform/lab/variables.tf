@@ -33,8 +33,8 @@ variable "vnet_cidr" {
     description = "Enter a CIDR block for the virtual network"
 }
 
-variable "subnet1_cidr" {
-    description = "Enter a CIDR block for subnet 1"
+variable "adds_subnet_cidr" {
+    description = "Enter a CIDR block for the Azure AD Domain Services subnet"
 }
 
 variable "subnet2_cidr" {
@@ -49,3 +49,7 @@ variable "vm_password" {
     description = "Enter the default vm password"
 }
 
+variable "dns_servers" {
+    type = "list"
+    description = "Enter DNS servers for the Lab VNET"
+}
