@@ -49,6 +49,13 @@ variable "vm_password" {
     description = "Enter the default vm password"
 }
 
+variable "sql_username" {
+    description = "Enter the default sql username"
+}
+
+variable "sql_password" {
+    description = "Enter the default sql password"
+}
 variable "dns_servers" {
     type = "list"
     description = "Enter DNS servers for the Lab VNET"
