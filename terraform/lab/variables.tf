@@ -64,3 +64,11 @@ variable "dns_servers" {
 variable "domain_name" {
     description = "Enter the name of the Active Directory domain"
 }
+
+variable "test_blob_upload_name" {
+    description = "Enter the name of a file to upload"
+}
+
+variable "test_blob_upload_path" {
+    description = "Enter the path of a file to upload"
+}
