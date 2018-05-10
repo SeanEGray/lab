@@ -21,11 +21,11 @@ resource "azurerm_storage_container" "lab_container" {
 }
 
 resource "azurerm_storage_blob" "testsb" {
-  name = "${var.testblobuploadname}"
+  name = "${var.test_blob_upload_name}"
   resource_group_name    = "${azurerm_resource_group.lab_rg.name}"
   storage_account_name   = "${azurerm_storage_account.lab_storage1.name}"
   storage_container_name = "${azurerm_storage_container.lab_container.name}"
-  source = "${var.testblobuploadpath}"
+  source = "${var.test_blob_upload_path}"
   type = "block"
 }
 
