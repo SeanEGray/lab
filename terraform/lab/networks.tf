@@ -23,11 +23,12 @@ resource "azurerm_subnet" "adds_subnet" {
     network_security_group_id = "${azurerm_network_security_group.adds_nsg.id}"
 }
 
-resource "azurerm_subnet" "lab_subnet_2" {
-    name = "lab_subnet_2"
-    address_prefix = "${var.subnet2_cidr}"
+resource "azurerm_subnet" "web_subnet" {
+    name = "web_subnet"
+    address_prefix = "${var.web_subnet_cidr}"
     virtual_network_name = "${azurerm_virtual_network.lab_vnet.name}"
     resource_group_name = "${azurerm_resource_group.lab_rg.name}"
+    network_security_group_id = "${azurerm_network_security_group.web_nsg.id}"
 }
 
 resource "azurerm_network_security_group" "adds_nsg" {

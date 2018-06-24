@@ -37,8 +37,8 @@ variable "adds_subnet_cidr" {
     description = "Enter a CIDR block for the Azure AD Domain Services subnet"
 }
 
-variable "subnet2_cidr" {
-    description = "Enter a CIDR block for subnet 2"
+variable "web_subnet_cidr" {
+    description = "Enter a CIDR block for the web tier subnet"
 }
 
 variable "vm_username" {
@@ -71,4 +71,8 @@ variable "test_blob_upload_name" {
 
 variable "test_blob_upload_path" {
     description = "Enter the path of a file to upload"
+}
+
+variable "vmwebhostname" {
+    description = "Enter the hostname of the web server VM"
 }
