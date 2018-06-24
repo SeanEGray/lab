@@ -73,6 +73,6 @@ variable "test_blob_upload_path" {
     description = "Enter the path of a file to upload"
 }
 
-variable "vmwebhostname" {
+variable "webvmhostname" {
     description = "Enter the hostname of the web server VM"
 }
