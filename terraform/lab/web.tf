@@ -58,4 +58,8 @@ resource "azurerm_virtual_machine" "webvm_vm" {
     admin_username = "${var.vm_username}"
     admin_password = "${var.vm_password}"
   }
+
+  os_profile_windows_config {
+      
+  }
 }
