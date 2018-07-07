@@ -72,7 +72,7 @@ resource "azurerm_virtual_machine_extension" "webdsc" {
   publisher = "Microsoft.PowerShell"
   type = "DSC"
   type_handler_version = "2.76"
-  depends_on = ["azurerm_virtual_machine.webvm"]
+  depends_on = ["azurerm_virtual_machine.webvm_vm"]
 
   settings = <<SETTINGS
   {
