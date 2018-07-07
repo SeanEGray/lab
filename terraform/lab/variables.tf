@@ -76,3 +76,20 @@ variable "test_blob_upload_path" {
 variable "webvmhostname" {
     description = "Enter the hostname of the web server VM"
 }
+
+variable "dsc_key" {
+    description = "DSC registration key"
+}
+
+variable "dsc_endpoint" {
+    description = "DSC registration URL"
+}
+
+variable "dsc_config" {
+    description = "Node configuration to apply (optional)"
+}
+
+variable "dsc_mode" {
+    description = "DSC Mode"
+    default = "applyAndAutocorrect"
+}

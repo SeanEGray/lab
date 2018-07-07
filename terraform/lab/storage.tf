@@ -35,3 +35,12 @@ resource "azurerm_storage_share" "testshare" {
   storage_account_name   = "${azurerm_storage_account.lab_storage2.name}"
   quota = 1
 }
+
+resource "azurerm_storage_blob" "dsc_metaconfig" {
+  name = ""
+  resource_group_name    = "${azurerm_resource_group.lab_rg.name}"
+  storage_account_name   = "${azurerm_storage_account.lab_storage1.name}"
+  storage_container_name = "${azurerm_storage_container.lab_container.name}"
+  source = "${var.dsc_metaconfig_path}"
+  type = "block"
+}

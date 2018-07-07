@@ -28,7 +28,7 @@ resource "azurerm_virtual_machine" "webvm_vm" {
 
   
   delete_os_disk_on_termination = true
-    delete_data_disks_on_termination = true
+  delete_data_disks_on_termination = true
 
   storage_image_reference {
     publisher = "MicrosoftWindowsServer"
@@ -60,6 +60,47 @@ resource "azurerm_virtual_machine" "webvm_vm" {
   }
 
   os_profile_windows_config {
-      
+      provision_vm_agent = true      
   }
+}
+
+resource "azurerm_virtual_machine_extension" "webdsc" {
+  name = "webdsc"
+  location = "${var.location}"
+  resource_group_name = "${azurerm_resource_group.lab_rg.name}"
+  virtual_machine_name = "${azurerm_virtual_machine.webvm_vm.name}"
+  publisher = "Microsoft.PowerShell"
+  type = "DSC"
+  type_handler_version = "2.76"
+  depends_on = ["azurerm_virtual_machine.webvm"]
+
+  settings = <<SETTINGS
+  {
+    "Privacy": {
+      "DataCollection": ""
+    },
+    "Properties": {
+      "RegistrationKey": {
+        "UserName": "PLACEDHOLDER_DONOTUSE",
+        "Password": "PrivateSettingsRef:registrationKeyPrivate"
+      },
+      "RegistrationUrl": "${var.dsc_endpoint}",
+      "NodeConfigurationName": "${var.dsc_config}",
+      "ConfigurationMode": "${var.dsc_mode}",
+      "ConfigurationModeFrequencyMins": 15,
+      "RefreshFrequencyMins": 30,
+      "RebootNodeIfNeeded": true,
+      "ActionAfterReboot": "continueConfiguration",
+      "AllowModuleOverwrite": false
+      }
+    }
+    SETTINGS
+
+  protected_settings = <<PROTECTED_SETTINGS
+  {
+    "Items": {
+      "registrationKeyPrivate": "${var.dsc_key}"
+    }
+  }
+  PROTECTED_SETTINGS
 }
